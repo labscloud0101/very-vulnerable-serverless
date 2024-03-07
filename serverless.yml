@@ -31,12 +31,11 @@ provider:
 
 package:
   individually: true
-  include:
+  patterns:
     - app.py
     - requirements.txt
-  exclude:
-    - venv/**
-    - node_modules/**
+    - '!venv/**'
+    - '!node_modules/**'
 plugins:
   - serverless-s3-deploy
   - serverless-python-requirements
