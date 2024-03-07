@@ -1,4 +1,4 @@
-service: prisma-cloud--s3-service
+service: prisma-cloud-s3-service
 
 custom:
   wsgi:
