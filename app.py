@@ -8,7 +8,8 @@ import pickle
 import base64
 
 app = Flask(__name__)
-app.secret_key = 'ThisisSuperFlagBySecurityDojo'
+app.secret_key1 = 'ThisisSuperFlagBySecurityDojo'
+app.secret_key2 = 'gjeros3d3jzqhqw6cqdza8h8'
 
 @app.route('/', methods=['GET'])
 def index():
