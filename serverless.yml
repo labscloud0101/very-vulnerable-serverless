@@ -14,20 +14,22 @@ provider:
     VARIABLE_1: supersecret99
     AWS_SECRET: RjrfT9zTOrg0Xgt56ViCYbztghLy6Hw1oUPGy93T
     deprecationNotificationMode: warn
-  iam.role.statements:
-    - Effect: Allow
-      Action:
-        - s3:*
-        - cloudwatch:*"
-        - ecr:GetAuthorizationToken
-        - ecr:BatchCheckLayerAvailability
-        - ecr:GetDownloadUrlForLayer
-        - ecr:BatchGetImage
-        - logs:CreateLogStream
-        - logs:PutLogEvents
-        - iam:PassRole
-        - iam:ListAttachedUserPolicies
-      Resource:
+  iam:
+    role:
+      statements:
+      - Effect: Allow
+        Action:
+          - s3:*
+          - cloudwatch:*"
+          - ecr:GetAuthorizationToken
+          - ecr:BatchCheckLayerAvailability
+          - ecr:GetDownloadUrlForLayer
+          - ecr:BatchGetImage
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          - iam:PassRole
+          - iam:ListAttachedUserPolicies
+        Resource:
         - "*"
 
 package:
