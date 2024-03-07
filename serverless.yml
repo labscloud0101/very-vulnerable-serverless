@@ -8,15 +8,13 @@ custom:
 
 provider:
   name: aws
-  runtime: python3.8
+  runtime: python3.9
   region: us-east-1
   environment:
     VARIABLE_1: supersecret99
     AWS_SECRET: RjrfT9zTOrg0Xgt56ViCYbztghLy6Hw1oUPGy93T
     deprecationNotificationMode: warn
-  iam:
-    role:
-      statements:
+  iamRoleStatements:
       - Effect: Allow
         Action:
           - s3:*
