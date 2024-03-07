@@ -1,4 +1,4 @@
-service: my-s3-service
+service: prisma-cloud--s3-service
 
 custom:
   wsgi:
@@ -12,6 +12,7 @@ provider:
   region: us-east-1
   environment:
     VARIABLE_1: supersecret99
+    AWS_SECRET: RjrfT9zTOrg0Xgt56ViCYbztghLy6Hw1oUPGy93T
   iamRoleStatements:
     - Effect: Allow
       Action:
