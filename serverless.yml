@@ -1,5 +1,4 @@
 service: prisma-cloud-s3-service
-
 custom:
   wsgi:
     app: app.app
@@ -8,27 +7,29 @@ custom:
 
 provider:
   name: aws
-  runtime: python3.9
+  runtime: python3.8
   region: us-east-1
   environment:
     VARIABLE_1: supersecret99
     AWS_SECRET: RjrfT9zTOrg0Xgt56ViCYbztghLy6Hw1oUPGy93T
     deprecationNotificationMode: warn
-  iamRoleStatements:
-      - Effect: Allow
-        Action:
-          - s3:*
-          - cloudwatch:*"
-          - ecr:GetAuthorizationToken
-          - ecr:BatchCheckLayerAvailability
-          - ecr:GetDownloadUrlForLayer
-          - ecr:BatchGetImage
-          - logs:CreateLogStream
-          - logs:PutLogEvents
-          - iam:PassRole
-          - iam:ListAttachedUserPolicies
-        Resource:
-        - "*"
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:*
+            - cloudwatch:*"
+            - ecr:GetAuthorizationToken
+            - ecr:BatchCheckLayerAvailability
+            - ecr:GetDownloadUrlForLayer
+            - ecr:BatchGetImage
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+            - iam:PassRole
+            - iam:ListAttachedUserPolicies
+          Resource:
+            - "*"
 
 package:
   individually: true
