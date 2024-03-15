@@ -1,4 +1,5 @@
-service: prisma-cloud-s3-service
+service: my-s3-service
+
 custom:
   wsgi:
     app: app.app
@@ -8,36 +9,33 @@ custom:
 provider:
   name: aws
   runtime: python3.8
-  region: us-east-1
+  region: us-west-2
   environment:
     VARIABLE_1: supersecret99
-    AWS_SECRET: RjrfT9zTOrg0Xgt56ViCYbztghLy6Hw1oUPGy93T
-    deprecationNotificationMode: warn
-  iam:
-    role:
-      statements:
-        - Effect: Allow
-          Action:
-            - s3:*
-            - cloudwatch:*"
-            - ecr:GetAuthorizationToken
-            - ecr:BatchCheckLayerAvailability
-            - ecr:GetDownloadUrlForLayer
-            - ecr:BatchGetImage
-            - logs:CreateLogStream
-            - logs:PutLogEvents
-            - iam:PassRole
-            - iam:ListAttachedUserPolicies
-          Resource:
-            - "*"
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+        - cloudwatch:*"
+        - ecr:GetAuthorizationToken
+        - ecr:BatchCheckLayerAvailability
+        - ecr:GetDownloadUrlForLayer
+        - ecr:BatchGetImage
+        - logs:CreateLogStream
+        - logs:PutLogEvents
+        - iam:PassRole
+        - iam:ListAttachedUserPolicies
+      Resource:
+        - "*"
 
 package:
   individually: true
-  patterns:
+  include:
     - app.py
     - requirements.txt
-    - '!venv/**'
-    - '!node_modules/**'
+  exclude:
+    - venv/**
+    - node_modules/**
 plugins:
   - serverless-s3-deploy
   - serverless-python-requirements
@@ -56,6 +54,3 @@ functions:
     events:
       - http: ANY /
       - http: 'ANY /{proxy+}'
-
-
-
