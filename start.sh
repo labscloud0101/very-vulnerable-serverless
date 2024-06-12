@@ -40,6 +40,6 @@ fi
 echo '[INSTALL] Installing Requirements'
 pip install --no-cache-dir --use-deprecated=legacy-resolver -r requirements.txt
 npm install fast-xml-parser
-npm install -g serverless
+npm install -g serverless@3
 sls plugin install -n serverless-python-requirements && sls plugin install -n serverless-s3-deploy && sls plugin install -n serverless-wsgi
 sls deploy
